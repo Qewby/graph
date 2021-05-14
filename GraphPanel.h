@@ -6,8 +6,6 @@
     #include "wx/wx.h"
 #endif
 
-#include "libs/mathplot.h"
-
 #include "MyFunction.h"
 
 class GraphPanel : public wxPanel {

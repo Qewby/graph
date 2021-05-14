@@ -1153,7 +1153,7 @@ IMPLEMENT_DYNAMIC_CLASS(mpWindow, wxWindow)
 
 BEGIN_EVENT_TABLE(mpWindow, wxWindow)
                 EVT_PAINT(mpWindow::OnPaint)
-                EVT_SIZE(mpWindow::OnSize)
+                /*EVT_SIZE(mpWindow::OnSize)
                 EVT_SCROLLWIN_THUMBTRACK(mpWindow::OnScrollThumbTrack)
                 EVT_SCROLLWIN_PAGEUP(mpWindow::OnScrollPageUp)
                 EVT_SCROLLWIN_PAGEDOWN(mpWindow::OnScrollPageDown)
@@ -1168,14 +1168,14 @@ BEGIN_EVENT_TABLE(mpWindow, wxWindow)
                 EVT_MOUSEWHEEL(mpWindow::OnMouseWheel) // JLB
                 EVT_MOTION(mpWindow::OnMouseMove)      // JLB
                 EVT_LEFT_DOWN(mpWindow::OnMouseLeftDown)
-                EVT_LEFT_UP(mpWindow::OnMouseLeftRelease)
+                EVT_LEFT_UP(mpWindow::OnMouseLeftRelease)*/
 
-                EVT_MENU(mpID_CENTER, mpWindow::OnCenter)
+                /*EVT_MENU(mpID_CENTER, mpWindow::OnCenter)
                 EVT_MENU(mpID_FIT, mpWindow::OnFit)
                 EVT_MENU(mpID_ZOOM_IN, mpWindow::OnZoomIn)
                 EVT_MENU(mpID_ZOOM_OUT, mpWindow::OnZoomOut)
                 EVT_MENU(mpID_LOCKASPECT, mpWindow::OnLockAspect)
-                EVT_MENU(mpID_HELP_MOUSE, mpWindow::OnMouseHelp)
+                EVT_MENU(mpID_HELP_MOUSE, mpWindow::OnMouseHelp)*/
 END_EVENT_TABLE()
 
 mpWindow::mpWindow(wxWindow *parent, wxWindowID id, const wxPoint &pos,

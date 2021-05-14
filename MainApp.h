@@ -1,10 +1,9 @@
 #ifndef GRAPH_MAINAPP_H
 #define GRAPH_MAINAPP_H
 
-#include "GraphPanel.h"
+#include "MainFrame.h"
 
-class MainApp : public wxApp
-{
+class MainApp : public wxApp {
 public:
     virtual bool OnInit();
 };

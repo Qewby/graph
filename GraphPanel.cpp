@@ -3,13 +3,13 @@
 GraphPanel::GraphPanel(wxWindow *parent, int xPos, int yPos, int width, int height)
     : wxPanel(parent, -1, wxPoint(xPos, yPos), wxSize(width, height))
     {
-        mpFunction = new MyFunction(2.05);
+        mpFunction = new MyFunction(0.1);
         mpFunction->SetContinuity(true);
 
-        mpPanel = new mpWindow(this, -1, wxPoint(xPos, yPos), wxSize(width, height), wxSUNKEN_BORDER );
+        mpPanel = new mpWindow(this, -1, wxPoint(0, 0), wxSize(width, height), wxSUNKEN_BORDER );
 
-        mpScaleX* xAxis = new mpScaleX(wxT("X"), mpALIGN_CENTER, false, mpX_NORMAL);
-        mpScaleY* yAxis = new mpScaleY(wxT("Y"), mpALIGN_CENTER, false);
+        mpScaleX* xAxis = new mpScaleX(_T("x"), mpALIGN_CENTER, false, mpX_NORMAL);
+        mpScaleY* yAxis = new mpScaleY(_T("y"), mpALIGN_CENTER, false);
 
         xAxis->SetDrawOutsideMargins(false);
         yAxis->SetDrawOutsideMargins(false);
