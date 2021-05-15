@@ -1,5 +1,9 @@
 #include "GraphPanel.h"
 
+BEGIN_EVENT_TABLE(GraphPanel, wxPanel)
+    EVT_SIZE(GraphPanel::OnSizeChanged)
+END_EVENT_TABLE()
+
 GraphPanel::GraphPanel(wxWindow *parent, int xPos, int yPos, int width, int height)
     : wxPanel(parent, -1, wxPoint(xPos, yPos), wxSize(width, height))
     {
@@ -41,4 +45,9 @@ void GraphPanel::EnableGrid(bool enable) {
 void GraphPanel::EnableAxis(bool enable) {
     mpAxisX->SetVisible(enable);
     mpAxisY->SetVisible(enable);
+}
+
+void GraphPanel::OnSizeChanged(wxSizeEvent& event) {
+    mpPanel->SetSize(event.GetSize());
+    mpPanel->Fit();
 }

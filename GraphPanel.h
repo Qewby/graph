@@ -17,6 +17,10 @@ public:
                         wxSize imageSize, bool fit);
     void EnableGrid(bool enable);
     void EnableAxis(bool enable);
+
+    void OnSizeChanged(wxSizeEvent& event);
+
+    DECLARE_EVENT_TABLE()
 private:
     mpWindow *mpPanel;
     MyFunction *mpFunction;
