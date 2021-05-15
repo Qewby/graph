@@ -14,7 +14,7 @@ GraphPanel::GraphPanel(wxWindow *parent, int xPos, int yPos, int width, int heig
         xAxis->SetDrawOutsideMargins(false);
         yAxis->SetDrawOutsideMargins(false);
 
-        mpPanel->SetMargins(30, 30, 20, 40);
+        mpPanel->SetMargins(30, 30, 30, 30);
         mpPanel->AddLayer(xAxis);
         mpPanel->AddLayer(yAxis);
         mpPanel->AddLayer(mpFunction);
@@ -30,4 +30,8 @@ GraphPanel::GraphPanel(wxWindow *parent, int xPos, int yPos, int width, int heig
 
 void GraphPanel::SetStep(double step) {
     mpFunction->SetStep(step);
+}
+
+void GraphPanel::SaveScreenshot(const wxString &filename, wxBitmapType type, wxSize imageSize, bool fit) {
+    mpPanel->SaveScreenshot(filename, type, imageSize, fit);
 }

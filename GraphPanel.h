@@ -13,6 +13,8 @@ public:
     GraphPanel(wxWindow *parent, int xPos, int yPos, int width, int height);
     void SetStep(double step);
 
+    void SaveScreenshot(const wxString &filename, wxBitmapType type,
+                        wxSize imageSize, bool fit);
 private:
     mpWindow *mpPanel;
     MyFunction *mpFunction;
