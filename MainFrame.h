@@ -16,6 +16,8 @@ public:
 
     DECLARE_EVENT_TABLE()
 private:
+    wxBoxSizer *mpControlSizer;
+    wxBoxSizer *mpTopSizer;
     GraphPanel *mpGraph;
     wxSlider *mpSlider;
     wxButton *mpSaveButton;
