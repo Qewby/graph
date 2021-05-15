@@ -6,25 +6,22 @@ GraphPanel::GraphPanel(wxWindow *parent, int xPos, int yPos, int width, int heig
         mpFunction = new MyFunction(0.1);
         mpFunction->SetContinuity(true);
 
-        mpPanel = new mpWindow(this, -1, wxPoint(0, 0), wxSize(width, height), wxSUNKEN_BORDER );
+        mpPanel = new mpWindow(this, -1, wxPoint(0, 0), wxSize(width, height));
 
-        mpScaleX* xAxis = new mpScaleX(_T("x"), mpALIGN_CENTER, false, mpX_NORMAL);
-        mpScaleY* yAxis = new mpScaleY(_T("y"), mpALIGN_CENTER, false);
+        mpAxisX = new mpScaleX(_T("x"), mpALIGN_CENTER, false, mpX_NORMAL);
+        mpAxisY = new mpScaleY(_T("y"), mpALIGN_CENTER, false);
 
-        xAxis->SetDrawOutsideMargins(false);
-        yAxis->SetDrawOutsideMargins(false);
+        mpAxisX->SetDrawOutsideMargins(false);
+        mpAxisY->SetDrawOutsideMargins(false);
 
         mpPanel->SetMargins(30, 30, 30, 30);
-        mpPanel->AddLayer(xAxis);
-        mpPanel->AddLayer(yAxis);
+        mpPanel->AddLayer(mpAxisX);
+        mpPanel->AddLayer(mpAxisY);
         mpPanel->AddLayer(mpFunction);
 
         wxPen myPen(*wxRED, 1, wxSOLID);
         mpFunction->SetPen(myPen);
 
-        mpWindow::zoomIncrementalFactor = 1;
-        mpPanel->LockAspect(true);
-        mpPanel->EnableMousePanZoom(false);
         mpPanel->Fit();
 }
 
@@ -34,4 +31,14 @@ void GraphPanel::SetStep(double step) {
 
 void GraphPanel::SaveScreenshot(const wxString &filename, wxBitmapType type, wxSize imageSize, bool fit) {
     mpPanel->SaveScreenshot(filename, type, imageSize, fit);
+}
+
+void GraphPanel::EnableGrid(bool enable) {
+    mpAxisX->SetTicks(!enable);
+    mpAxisY->SetTicks(!enable);
+}
+
+void GraphPanel::EnableAxis(bool enable) {
+    mpAxisX->SetVisible(enable);
+    mpAxisY->SetVisible(enable);
 }

@@ -15,9 +15,13 @@ public:
 
     void SaveScreenshot(const wxString &filename, wxBitmapType type,
                         wxSize imageSize, bool fit);
+    void EnableGrid(bool enable);
+    void EnableAxis(bool enable);
 private:
     mpWindow *mpPanel;
     MyFunction *mpFunction;
+    mpScaleX *mpAxisX;
+    mpScaleY *mpAxisY;
 };
 
 

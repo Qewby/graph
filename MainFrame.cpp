@@ -4,6 +4,8 @@ BEGIN_EVENT_TABLE(MainFrame, wxFrame)
     EVT_COMMAND_SCROLL_THUMBTRACK(SLIDER_ID, MainFrame::OnChange)
     EVT_COMMAND_SCROLL_CHANGED(SLIDER_ID, MainFrame::OnChange)
     EVT_BUTTON(SAVE_BUTTON_ID, MainFrame::OnClickSaveButton)
+    EVT_CHECKBOX(GRID_CHECK_BOX_ID, MainFrame::OnGridEnable)
+    EVT_CHECKBOX(AXIS_CHECK_BOX_ID, MainFrame::OnAxisEnable)
 END_EVENT_TABLE()
 
 MainFrame::MainFrame(const wxString& title, int xPos, int yPos, int width, int height)
@@ -11,13 +13,24 @@ MainFrame::MainFrame(const wxString& title, int xPos, int yPos, int width, int h
     {
     mpGraph = new GraphPanel(this, width - height, 0, height, height);
     mpSlider = new wxSlider(this, SLIDER_ID, 10, 10, 300,
-                            wxPoint(20, 20), wxSize(200, 30));
+                            wxPoint(20, 50), wxSize(200, 30));
+    mpTextField = new wxTextCtrl(this, TEXT_FIELD_ID, _T("0.10"),
+                                 wxPoint(20, 100), wxSize(200, 30));
     mpSaveButton = new wxButton(this, SAVE_BUTTON_ID, _T("Save"),
-                                wxPoint(20, 80), wxSize(200, 30));
+                                wxPoint(20, 150), wxSize(200, 30));
+    mpAxisCheckBox = new wxCheckBox(this, AXIS_CHECK_BOX_ID, _T("Enable axis"),
+                                        wxPoint(20, 200));
+    mpAxisCheckBox->SetValue(true);
+    mpGridCheckBox = new wxCheckBox(this, GRID_CHECK_BOX_ID, _T("Enable grid"),
+                                    wxPoint(20, 220));
+    mpGridCheckBox->SetValue(true);
 }
 
 void MainFrame::OnChange(wxScrollEvent &event) {
     mpGraph->SetStep(event.GetPosition() / 100.0);
+    wxString step = wxString::Format(_T("%.2f"), event.GetPosition() / 100.0);
+    mpTextField->Clear();
+    mpTextField->WriteText(step);
     mpGraph->Refresh();
 }
 
@@ -35,3 +48,15 @@ void MainFrame::OnClickSaveButton(wxCommandEvent &event) {
     }
     event.Skip();
 }
+
+void MainFrame::OnGridEnable(wxCommandEvent &event) {
+    mpGraph->EnableGrid(event.IsChecked());
+    mpGraph->Refresh();
+}
+
+void MainFrame::OnAxisEnable(wxCommandEvent &event) {
+    mpGraph->EnableAxis(event.IsChecked());
+    mpGridCheckBox->Enable(event.IsChecked());
+    mpGraph->Refresh();
+}
+
