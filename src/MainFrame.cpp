@@ -24,11 +24,13 @@ MainFrame::MainFrame(const wxString& title, int xPos, int yPos, int width, int h
     mpGridCheckBox = new wxCheckBox(this, GRID_CHECK_BOX_ID, _T("Enable grid"),
                                     wxPoint(20, 220));
     mpGridCheckBox->SetValue(true);
-    wxStaticText *domainText = new wxStaticText(this, wxID_ANY, _T("Domain: from 0 to 20π"));
+    wxStaticText *domainText = new wxStaticText(this, wxID_ANY, _T("Domain: from 0 to 200π"));
     wxStaticText *stepText = new wxStaticText(this, wxID_ANY, _T("Step:"));
+    wxStaticText *graphText = new wxStaticText(this, wxID_ANY, _T("r = sin(0.99θ)"));
 
     mpControlSizer = new wxBoxSizer(wxVERTICAL);
     mpControlSizer->AddStretchSpacer(20);
+    mpControlSizer->Add(graphText, 1, wxALIGN_CENTER);
     mpControlSizer->Add(mpSlider, 1, wxALIGN_CENTER);
     mpControlSizer->Add(stepText, 1, wxALIGN_CENTER);
     mpControlSizer->Add(mpTextField, 1, wxALIGN_CENTER);

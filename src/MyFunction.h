@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-#include "libs/mathplot.h"
+#include "../libs/mathplot.h"
 
 class MyFunction : public mpFXY {
 public:

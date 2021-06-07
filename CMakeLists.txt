@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.19)
 set(PROJECT_NAME graph)
 project(${PROJECT_NAME})
 
-set(SOURCE_FILES MainApp.cpp MainApp.h libs/mathplot.cpp libs/mathplot.h MyFunction.cpp MyFunction.h GraphPanel.cpp GraphPanel.h MainFrame.cpp MainFrame.h)
+set(SOURCE_FILES src/MainApp.cpp src/MainApp.h libs/mathplot.cpp libs/mathplot.h src/MyFunction.cpp src/MyFunction.h src/GraphPanel.cpp src/GraphPanel.h src/MainFrame.cpp src/MainFrame.h)
 set(CMAKE_CXX_STANDARD 14)
 
 find_package(wxWidgets REQUIRED COMPONENTS net core base)
